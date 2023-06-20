@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Smknstd\FakerPicsumImages\FakerPicsumImagesProvider;
 
 /**
  * @extends Factory<Category>
@@ -17,9 +18,12 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
+        $this->faker->addProvider(new FakerPicsumImagesProvider($this->faker));
+        $filename = $this->faker->image('public/storage/images', 1920, 1080, false);
+
         return [
             'name' => $this->faker->word(),
-            'image' => $this->faker->image(),
+            'image' => "images/$filename",
         ];
     }
 }

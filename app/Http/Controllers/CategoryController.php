@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-// TODO: Добавить кнопку удаления категории
 // TODO: Связать оплату с пользователем
 // TODO: фоточки
 // TODO: Добавить логотипы платёжных систем

@@ -40,9 +40,16 @@
                 @can('categories.edit')
                     <div class="d-flex justify-content-between mb-4 gap-3 align-items-center">
                         {{ $posts->onEachSide(1)->links() }}
-                        <a href="{{ route('categories.edit', $category) }}">
-                            <button class="btn btn-outline-primary text-uppercase">Изменить</button>
-                        </a>
+                        <div class="d-flex gap-3">
+                            <a href="{{ route('categories.edit', $category) }}">
+                                <button class="btn btn-outline-primary text-uppercase">Изменить</button>
+                            </a>
+                            <form action="{{ route('categories.destroy', $category) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-outline-primary text-uppercase">Удалить</button>
+                            </form>
+                        </div>
                     </div>
                 @else
                     <div class="d-flex justify-content-center mb-4 gap-3 align-items-center">
