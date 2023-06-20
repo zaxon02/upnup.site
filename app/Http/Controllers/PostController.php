@@ -9,14 +9,13 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     /**
-     *
+     * Display a listing of the resource.
      */
     public function index()
     {
-        $posts = Post::all();
-        $categories = Category::all();
+        $posts = Post::orderByDesc('created_at')->paginate(4);
 
-        return view('posts.index', ['posts' => $posts, 'categories' => $categories]);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     /**
@@ -36,11 +35,23 @@ class PostController extends Controller
     {
         $post = new Post();
         $post->title = $request->input('title');
+        $post->subtitle = $request->input('subtitle');
         $post->content = $request->input('content');
         $post->category_id = $request->input('category');
+        $post->image = $request->file('image')->store('images', 'public');
         $post->save();
 
         return redirect()->route('posts.index');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($id)
+    {
+       $post = Post::findOrFail($id);
+
+       return view('posts.show', ['post' => $post]);
     }
 
     /**
@@ -61,11 +72,17 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->title = $request->input('title');
+        $post->subtitle = $request->input('subtitle');
         $post->content = $request->input('content');
         $post->category_id = $request->input('category');
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $post->image = $request->file('image')->store('images', 'public');
+        }
+
         $post->save();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.show', $post);
     }
 
     /**

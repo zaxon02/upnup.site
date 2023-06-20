@@ -20,6 +20,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // TODO: Store image
         $category = new Category();
         $category->name = $request->input('name');
         $category->save();
@@ -32,6 +33,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
+        // TODO: Pagination
         $category = Category::findOrFail($id);
         $posts = $category->posts;
 
@@ -53,6 +55,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // TODO: Update image
         $category = Category::findOrFail($id);
         $category->name = $request->input('name');
         $category->save();

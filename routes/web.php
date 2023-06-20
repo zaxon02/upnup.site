@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OfferController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
@@ -20,3 +21,9 @@ Route::redirect('/', '/posts');
 Route::resource('categories', CategoryController::class);
 
 Route::resource('posts', PostController::class);
+
+Route::resource('offers', OfferController::class);
+
+Route::view('contact', 'contact')->name('contact');
+
+Route::view('about', 'about')->name('about');

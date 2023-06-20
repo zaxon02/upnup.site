@@ -1,34 +1,47 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('app')
 
-    <title>Laravel</title>
-</head>
-<body>
-@foreach($categories as $category)
-    <p>{{ $category->name }}</p>
-@endforeach
+@section('title')
+    Все записи
+@endsection
 
-<a href="/posts/create"><button>Создать</button></a>
-
-@foreach ($posts as $post)
-    <p>This is post {{ $post->title}} <br> {{ $post->content }}</p>
-    <p>Категория: {{ $post->category->name }}</p>
-
-    <div style="display: flex">
-        <form action="/posts/{{ $post->id }}" method="post">
-            @method('DELETE')
-            @csrf
-            <button type="submit">Удалить</button>
-        </form>
-
-        <a href="/posts/{{$post->id}}/edit">
-            <button type="submit">Изменить</button>
-        </a>
+@section('content')
+    <!-- Page Header-->
+    <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Clean Blog</h1>
+                        <span class="subheading">A Blog Theme by Start Bootstrap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                @foreach ($posts as $post)
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href="{{ route('posts.show', $post) }}">
+                            <h2 class="post-title">{{ $post->title }}</h2>
+                            <h3 class="post-subtitle">{{ $post->subtitle }}</h3>
+                        </a>
+                        <p class="post-meta">
+                            <a href="{{ route('categories.show', $post->category) }}">{{ $post->category->name }}</a>,
+                            {{ $post->created_at->isoFormat('DD.MM.YYYY') }}
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                @endforeach
+                <!-- Pager-->
+                <div class="d-flex justify-content-center mb-4 gap-3 align-items-center">
+                    {{ $posts->onEachSide(1)->links() }}
+                </div>
+            </div>
+        </div>
     </div>
-@endforeach
-
-</body>
-</html>
+@endsection
