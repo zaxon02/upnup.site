@@ -40,6 +40,7 @@ class CategoryController extends Controller
         return view('categories.show', ['category' => $category, 'posts' => $posts]);
     }
 
+    //TODO category page edit
     /**
      * Show the form for editing the specified resource.
      */
@@ -55,9 +56,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // TODO: Update image
         $category = Category::findOrFail($id);
         $category->name = $request->input('name');
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $category->image = $request->file('image')->store('images', 'public');
+        }
+
         $category->save();
 
         return redirect()->route('categories.show', $category);
