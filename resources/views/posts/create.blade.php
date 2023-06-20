@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-    Создать
+    Создать запись
 @endsection
 
 @section('content')
@@ -52,6 +52,7 @@
                             <br />
                             <!-- Submit Button-->
                             <button class="btn btn-primary text-uppercase" type="submit">Создать</button>
+                            <a class="btn btn-primary text-uppercase" href="{{ route('categories.create') }}">Добавить категорию</a>
                         </form>
                     </div>
                 </div>
