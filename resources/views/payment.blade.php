@@ -45,7 +45,10 @@
                             </div>
                             <br />
                             <!-- Submit Button-->
+                            <div style="display:flex; justify-content:space-between; align-items:center">
                             <button class="btn btn-primary text-uppercase" type="submit">Оплатить</button>
+                            <img src="/assets/img/paykeeper.png" alt="paykeeper">
+                            </div>
                         </form>
                     </div>
                 </div>
