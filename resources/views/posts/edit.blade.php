@@ -78,7 +78,8 @@
                                 </script>
                             </div>
                             <div class="form-check">
-                                <input name="premium" id="premium" type="checkbox"
+                                <input name="premium" type="hidden" value="0">
+                                <input name="premium" id="premium" type="checkbox" value="1"
                                        @checked(old('premium', $post->premium)) class="form-check-input"/>
                                 <label for="premium">Premium</label>
                             </div>

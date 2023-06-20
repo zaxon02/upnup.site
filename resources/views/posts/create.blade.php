@@ -71,7 +71,8 @@
                                 </script>
                             </div>
                             <div class="form-check">
-                                <input name="premium" id="premium" type="checkbox" @checked(old('premium'))
+                                <input name="premium" type="hidden" value="0">
+                                <input name="premium" id="premium" type="checkbox" value="1" @checked(old('premium'))
                                        class="form-check-input"/>
                                 <label for="premium">Premium</label>
                             </div>

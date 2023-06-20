@@ -28,7 +28,7 @@ class UpdatePostRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'subtitle' => ['required', 'string', 'max:255'],
-            'premium' => ['sometimes', 'boolean'],
+            'premium' => ['required', 'boolean'],
             'content' => ['required', 'string', 'max:65535'],
             'image' => ['sometimes', 'image', 'dimensions:max_width=3840,max_height=2160'],
             'category_id' => ['required', Rule::exists(Category::class, 'id')],
