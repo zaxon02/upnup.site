@@ -37,12 +37,19 @@
                     <hr class="my-4" />
                 @endforeach
                 <!-- Pager-->
-                <div class="d-flex justify-content-between mb-4 gap-3 align-items-center">
-                    {{ $posts->onEachSide(1)->links() }}
-                    <a href="{{ route('categories.edit', $category) }}">
-                        <button class="btn btn-outline-primary text-uppercase">Изменить</button>
-                    </a>
-                </div>
+                @guest
+                    <div class="d-flex justify-content-center mb-4 gap-3 align-items-center">
+                        {{ $posts->onEachSide(1)->links() }}
+                    </div>
+                @endguest
+                @auth
+                    <div class="d-flex justify-content-between mb-4 gap-3 align-items-center">
+                        {{ $posts->onEachSide(1)->links() }}
+                        <a href="{{ route('categories.edit', $category) }}">
+                            <button class="btn btn-outline-primary text-uppercase">Изменить</button>
+                        </a>
+                    </div>
+                @endauth
             </div>
         </div>
     </div>

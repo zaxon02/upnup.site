@@ -33,18 +33,20 @@
         </div>
     </article>
     <!-- Post Actions-->
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7 d-flex justify-content-end mb-4 gap-3">
-                <form action="{{ route('posts.destroy', $post) }}" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-outline-primary text-uppercase">Удалить</button>
-                </form>
-                <a href="{{ route('posts.edit', $post) }}">
-                    <button class="btn btn-outline-primary text-uppercase">Изменить</button>
-                </a>
+    @auth
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7 d-flex justify-content-end mb-4 gap-3">
+                    <form action="{{ route('posts.destroy', $post) }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-outline-primary text-uppercase">Удалить</button>
+                    </form>
+                    <a href="{{ route('posts.edit', $post) }}">
+                        <button class="btn btn-outline-primary text-uppercase">Изменить</button>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
+    @endauth
 @endsection
