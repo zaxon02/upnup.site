@@ -46,6 +46,7 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $request->input('title');
         $post->subtitle = $request->input('subtitle');
+        $post->premium = $request->boolean('premium');
         $post->content = $request->input('content');
         $post->category_id = $request->input('category');
         $post->image = $request->file('image')->store('images', 'public');
@@ -83,6 +84,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->title = $request->input('title');
         $post->subtitle = $request->input('subtitle');
+        $post->premium = $request->boolean('premium');
         $post->content = $request->input('content');
         $post->category_id = $request->input('category');
 

@@ -45,7 +45,7 @@
                                 <input class="form-control" type="file" name="image" id="image" accept="image/*" placeholder="_"/>
                                 <label for="image">Изображение</label>
                             </div>
-                            <div class="form-floating">
+                            <div class="mt-3">
                                 <textarea id="content" name="content"></textarea>
                                 <label for="content"></label>
                                 <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
@@ -59,6 +59,10 @@
                                         toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
                                     });
                                 </script>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="premium" id="premium"/>
+                                <label for="premium">Premium</label>
                             </div>
                             <br />
                             <!-- Submit Button-->

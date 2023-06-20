@@ -26,6 +26,7 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence(),
             'content' => $this->faker->realText(),
             'subtitle' => $this->faker->sentence(),
+            'premium' => $this->faker->boolean(),
             'category_id' => Category::inRandomOrder()->first()->id,
             'image' => "images/$filename",
         ];

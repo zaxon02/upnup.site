@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('subtitle');
+            $table->boolean('premium')->default(false);
             $table->text('content');
             $table->string('image');
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
