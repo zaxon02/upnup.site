@@ -30,7 +30,7 @@
                         <form action="https://demo.paykeeper.ru/create/" method="post">
                             @csrf
                             <input name="clientid" type="hidden" value="{{ Auth::id() }}"/>
-                            <input name="user_result_callback" type="hidden" value="http://127.0.0.1:8000/paykeeper"/>
+                            <input name="user_result_callback" type="hidden" value="{{ route('paykeeper') }}"/>
                             <div class="form-floating">
                                 <input class="form-control" id="sum" name="sum" type="number" value="15000" readonly/>
                                 <label for="sum">Сумма</label>
