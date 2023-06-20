@@ -14,20 +14,20 @@ class PostPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(User $user): Response
+    public function viewAny(?User $user): bool
     {
-        return Response::allow();
+        return true;
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Post $post): Response
+    public function view(?User $user, Post $post): Response
     {
         if (!$post->premium)
             return Response::allow();
 
-        if ($user->can('view premium posts'))
+        if ($user?->can('view premium posts'))
             return Response::allow();
 
         return Response::deny('You do not have subscription.');
@@ -36,33 +36,24 @@ class PostPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): Response
+    public function create(User $user): bool
     {
-        if ($user->can('create posts'))
-            return Response::allow();
-
-        return Response::deny();
+        return $user->can('create posts');
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Post $post): Response
+    public function update(User $user, Post $post): bool
     {
-        if ($user->can('update posts'))
-            return Response::allow();
-
-        return Response::deny();
+        return $user->can('update posts');
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Post $post): Response
+    public function delete(User $user, Post $post): bool
     {
-        if ($user->can('delete posts'))
-            return Response::allow();
-
-        return Response::deny();
+        return $user->can('delete posts');
     }
 }

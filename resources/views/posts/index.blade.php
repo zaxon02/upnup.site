@@ -25,13 +25,13 @@
                 @foreach ($posts as $post)
                     <!-- Post preview-->
                     <div class="post-preview">
-                        @if(!$post->premium || $post->premium && Auth::user()->can('view premium posts'))
+                        @if(!$post->premium || $post->premium && Auth::user()?->can('view premium posts'))
                             <a href="{{ route('posts.show', $post) }}">
                                 <h2 class="post-title">{{ $post->title }}</h2>
                                 <h3 class="post-subtitle">{{ $post->subtitle }}</h3>
                             </a>
                         @else
-                            <a href="{{ route('payment', $post) }}">
+                            <a href="{{ route('payment') }}">
                                 <h2 class="post-title">{{ $post->title }}</h2>
                                 <h3 class="post-subtitle">{{ $post->subtitle }}</h3>
                             </a>

@@ -18,6 +18,7 @@ class PaykeeperController extends Controller
         if ($result == 'success') {
             $user = User::findOrFail($clientid);
             $user->subscribed_at = now();
+            $user->givePermissionTo('view premium posts');
             $user->save();
             return view('paykeeper.success');
         }

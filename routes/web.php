@@ -23,8 +23,7 @@ Route::view('/contact', 'contact')->name('contact');
 
 Route::view('/about', 'about')->name('about');
 
-// TODO: Redirect non-auth users
-Route::view('/payment', 'payment')->name('payment');
+Route::view('/payment', 'payment')->middleware('auth')->name('payment');
 
 Route::get('/paykeeper', PaykeeperController::class)->name('paykeeper');
 
