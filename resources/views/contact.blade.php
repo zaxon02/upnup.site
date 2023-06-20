@@ -12,7 +12,7 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="page-heading">
                         <h1>Связаться</h1>
-                        <span class="subheading">Остались вопросы? Напишите нам.</span>
+                        <span class="subheading">Остались вопросы? Напишите мне.</span>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
-                    <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
+                    <p>Хотите связаться с мной? Заполните форму ниже, чтобы отправить мне сообщение, и я свяжусь с вами как можно скорее!</p>
                     <div class="my-5">
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
