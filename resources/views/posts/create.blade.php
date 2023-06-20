@@ -23,30 +23,40 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger">
+                                    {{ $error }}
+                                </div>
+                            @endforeach
+                        @endif
                         <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-floating">
-                                <input class="form-control" type="text" maxlength="255" name="title" id="title" placeholder="_"/>
+                                <input name="title" id="title" required maxlength="255" value="{{ old('title') }}"
+                                       placeholder="_" class="form-control"/>
                                 <label for="title">Заголовок</label>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" type="text" maxlength="255" name="subtitle" id="subtitle" placeholder="_"/>
+                                <input name="subtitle" id="subtitle" required maxlength="255"
+                                       value="{{ old('subtitle') }}" placeholder="_" class="form-control"/>
                                 <label for="subtitle">Подзаголовок</label>
                             </div>
                             <div class="form-floating">
-                                <select class="form-control" name="category" id="category">
+                                <select class="form-control" name="category_id" id="category_id">
                                     @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
-                                <label for="category">Категория</label>
+                                <label for="category_id">Категория</label>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" type="file" name="image" id="image" accept="image/*" placeholder="_"/>
+                                <input name="image" id="image" type="file" required accept="image/*" placeholder="_"
+                                       class="form-control"/>
                                 <label for="image">Изображение</label>
                             </div>
                             <div class="mt-3">
-                                <textarea id="content" name="content"></textarea>
+                                <textarea name="content" id="content">{{ old('content') }}</textarea>
                                 <label for="content"></label>
                                 <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
                                 <script>
@@ -61,7 +71,8 @@
                                 </script>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="premium" id="premium"/>
+                                <input name="premium" id="premium" type="checkbox" @checked(old('premium'))
+                                       class="form-check-input"/>
                                 <label for="premium">Premium</label>
                             </div>
                             <br />

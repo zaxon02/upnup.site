@@ -34,19 +34,20 @@
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
+                                    <input name="email" id="floatingInput" type="email" value="{{ old('email') }}"
+                                           required placeholder="name@example.com" class="form-control">
                                     <label for="floatingInput">Email</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+                                    <input name="password" id="floatingPassword" type="password" required minlength="8"
+                                           placeholder="Password" class="form-control">
                                     <label for="floatingPassword">Пароль</label>
                                 </div>
 
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" name="remember" id="rememberPasswordCheck">
-                                    <label class="form-check-label" for="rememberPasswordCheck">
-                                        Запомнить меня
-                                    </label>
+                                    <input name="remember" id="rememberPasswordCheck" type="checkbox"
+                                           @checked(old('remember')) class="form-check-input">
+                                    <label for="rememberPasswordCheck" class="form-check-label">Запомнить меня</label>
                                 </div>
 
                                 <div class="d-grid">

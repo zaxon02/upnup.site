@@ -28,37 +28,42 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger">
+                                    {{ $error }}
+                                </div>
+                            @endforeach
+                        @endif
                         <form action="{{ route('posts.update', $post) }}" method="post" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="form-floating">
-                                <input class="form-control" type="text" maxlength="255" name="title" id="title" placeholder="_"
-                                       value="{{ $post->title }}"/>
+                                <input name="title" id="title" required maxlength="255"
+                                       value="{{ old('title', $post->title) }}" placeholder="_" class="form-control"/>
                                 <label for="title">Заголовок</label>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" type="text" maxlength="255" name="subtitle" id="subtitle" placeholder="_"
-                                       value="{{ $post->subtitle }}"/>
+                                <input name="subtitle" id="subtitle" required maxlength="255"
+                                       value="{{ old('subtitle', $post->subtitle) }}" placeholder="_"
+                                       class="form-control"/>
                                 <label for="subtitle">Подзаголовок</label>
                             </div>
                             <div class="form-floating">
                                 <select class="form-control" name="category" id="category">
                                     @foreach($categories as $category)
-                                        @if($category->id==$post->category_id)
-                                            <option value="{{$category->id}}" selected>{{ $category->name }}</option>
-                                        @else
-                                            <option value="{{$category->id}}">{{ $category->name }}</option>
-                                        @endif
+                                        <option value="{{ $category->id }}" @selected(old('category_id', $post->category_id) == $category->id)>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                                 <label for="category">Категория</label>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" type="file" name="image" id="image" accept="image/*" placeholder="_"/>
+                                <input name="image" id="image" type="file" accept="image/*" placeholder="_"
+                                       class="form-control"/>
                                 <label for="image">Изображение</label>
                             </div>
                             <div class="mt-3">
-                                <textarea id="content" name="content">{{ $post->content }}</textarea>
+                                <textarea name="content" id="content">{{ old('content', $post->content) }}</textarea>
                                 <label for="content"></label>
                                 <script src="{{ asset('js/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
                                 <script>
@@ -73,7 +78,8 @@
                                 </script>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="premium" id="premium" @if($post->premium) checked @endif/>
+                                <input name="premium" id="premium" type="checkbox"
+                                       @checked(old('premium', $post->premium)) class="form-check-input"/>
                                 <label for="premium">Premium</label>
                             </div>
                             <br />

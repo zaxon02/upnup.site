@@ -23,14 +23,23 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger">
+                                    {{ $error }}
+                                </div>
+                            @endforeach
+                        @endif
                         <form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-floating">
-                                <input class="form-control" type="text" maxlength="255" name="name" id="name" placeholder="_"/>
+                                <input name="name" id="name" required maxlength="255" value="{{ old('name') }}"
+                                       placeholder="_" class="form-control"/>
                                 <label for="name">Название</label>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" type="file" name="image" id="image" accept="image/*" placeholder="_"/>
+                                <input name="image" id="image" type="file" required accept="image/*" placeholder="_"
+                                       class="form-control"/>
                                 <label for="image">Изображение</label>
                             </div>
                             <br />

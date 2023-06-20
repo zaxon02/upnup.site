@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PaykeeperRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class PaykeeperController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke(PaykeeperRequest $request)
     {
         $clientid = $request->input('clientid');
         $result = $request->input('result');

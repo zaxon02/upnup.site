@@ -34,19 +34,23 @@
                             <form action="{{ route('register') }}" method="post">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="name" id="name" maxlength="255" placeholder="_">
+                                    <input name="name" id="name" required maxlength="255" placeholder="_"
+                                           class="form-control">
                                     <label for="name">Имя</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" name="email" id="email" maxlength="255" placeholder="_">
+                                    <input name="email" id="email" type="email" required maxlength="255"
+                                           placeholder="_" class="form-control">
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="_">
+                                    <input name="password" id="password" type="password" required minlength="8"
+                                           placeholder="_" class="form-control">
                                     <label for="password">Пароль</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="_">
+                                    <input name="password_confirmation" id="password_confirmation" type="password"
+                                           required minlength="8" class="form-control" placeholder="_">
                                     <label for="password_confirmation">Подтверждение пароля</label>
                                 </div>
 

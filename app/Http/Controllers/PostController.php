@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -40,14 +41,14 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         $post = new Post();
         $post->title = $request->input('title');
         $post->subtitle = $request->input('subtitle');
         $post->premium = $request->boolean('premium');
         $post->content = $request->input('content');
-        $post->category_id = $request->input('category');
+        $post->category_id = $request->input('category_id');
         $post->image = $request->file('image')->store('images', 'public');
         $post->save();
 
@@ -75,13 +76,13 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Post $post, Request $request)
+    public function update(UpdatePostRequest $request, Post $post)
     {
         $post->title = $request->input('title');
         $post->subtitle = $request->input('subtitle');
         $post->premium = $request->boolean('premium');
         $post->content = $request->input('content');
-        $post->category_id = $request->input('category');
+        $post->category_id = $request->input('category_id');
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $post->image = $request->file('image')->store('images', 'public');
