@@ -25,7 +25,6 @@
                             <h3 class="login-heading mb-4">С возращением!</h3>
 
                             <!-- Sign In Form -->
-                            {{-- TODO: Добавить выход --}}
                             @if ($errors->any())
                                 @foreach ($errors->all() as $error)
                                     <div class="alert alert-danger">

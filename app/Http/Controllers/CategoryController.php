@@ -41,7 +41,6 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        // TODO: Развидеть это
         $category = Category::findOrFail($id);
         $posts = $category->posts()->orderByDesc('created_at')->paginate(4);
 
@@ -58,7 +57,6 @@ class CategoryController extends Controller
         return view('categories.edit', ['category' => $category]);
     }
 
-    // TODO: Добавить регистрацию
     /**
      * Update the specified resource in storage.
      */

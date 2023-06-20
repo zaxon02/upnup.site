@@ -25,7 +25,6 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
                     <div class="my-5">
-                        {{-- TODO: Translate errors --}}
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
                                 <div class="alert alert-danger">
