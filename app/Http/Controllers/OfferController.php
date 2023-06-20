@@ -3,21 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offer;
+use DefStudio\Telegraph\Facades\Telegraph;
 use Illuminate\Http\Request;
 
 class OfferController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-
     /**
      * Store a newly created resource in storage.
      */
@@ -28,29 +18,10 @@ class OfferController extends Controller
         $offer->email = $request->input('email');
         $offer->phone = $request->input('phone');
         $offer->message = $request->input('message');
-
         $offer->save();
 
+        Telegraph::message($offer->message)->send();
+
         return redirect()->route('posts.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
-        $offer = Post::findOrFail($id);
-
-        return view('posts.show', ['post' => $offer]);
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
