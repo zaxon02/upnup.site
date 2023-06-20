@@ -50,11 +50,9 @@ class CategoryController extends Controller
         return view('categories.edit', ['category' => $category]);
     }
 
-    // TODO: Поправить пути
     // TODO: Добавить регистрацию
     // TODO: Добавить валидацию
     // TODO: Отправлять заявки в Telegram
-    // TODO: Перенести кнопку создать на главную
     /**
      * Update the specified resource in storage.
      */

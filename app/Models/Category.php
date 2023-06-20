@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
-    // TODO: Add Factory
     use HasFactory;
 
     /**
