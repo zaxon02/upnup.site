@@ -51,8 +51,6 @@ class CategoryController extends Controller
     }
 
     // TODO: Добавить регистрацию
-    // TODO: Добавить валидацию
-    // TODO: Отправлять заявки в Telegram
     /**
      * Update the specified resource in storage.
      */

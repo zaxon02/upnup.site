@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreOfferRequest;
 use App\Models\Offer;
 use DefStudio\Telegraph\Facades\Telegraph;
-use Illuminate\Http\Request;
 
 class OfferController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreOfferRequest $request)
     {
         $offer = new Offer();
         $offer->name = $request->input('name');
