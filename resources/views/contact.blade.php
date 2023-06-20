@@ -25,6 +25,7 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
                     <div class="my-5">
+                        // TODO: Translate errors
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
                                 <div class="alert alert-danger">
@@ -35,19 +36,19 @@
                         <form action="{{ route('offers.store') }}" method="post">
                             @csrf
                             <div class="form-floating">
-                                <input class="form-control" id="name" name="name" type="text" placeholder="Введите имя..."/>
+                                <input class="form-control" id="name" name="name" maxlength="255" type="text" placeholder="_"/>
                                 <label for="name">Имя</label>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" id="email" name="email" type="email" placeholder="Введите email..."/>
+                                <input class="form-control" id="email" name="email" maxlength="255" type="email" placeholder="_"/>
                                 <label for="email">Email адрес</label>
                             </div>
                             <div class="form-floating">
-                                <input class="form-control" id="phone" name="phone" type="tel" placeholder="Введите номер телефона..."/>
+                                <input class="form-control" id="phone" name="phone" maxlength="255" type="tel" placeholder="_"/>
                                 <label for="phone">Номер телефона</label>
                             </div>
                             <div class="form-floating">
-                                <textarea class="form-control" id="message" name="message" placeholder="Введите сообщение..." style="height: 12rem" ></textarea>
+                                <textarea class="form-control" id="message" name="message" maxlength="2047" placeholder="_" style="height: 12rem" ></textarea>
                                 <label for="message">Сообщение</label>
                             </div>
                             <br />
