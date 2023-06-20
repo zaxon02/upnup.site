@@ -29,21 +29,23 @@
                     <div class="my-5">
                         <form action="https://demo.paykeeper.ru/create/" method="post">
                             @csrf
+                            <input name="clientid" type="hidden" value="{{ Auth::id() }}"/>
+                            <input name="user_result_callback" type="hidden" value="http://127.0.0.1:8000/paykeeper"/>
                             <div class="form-floating">
-                                <input class="form-control" id="sum" name="sum" min="0.01" max="99999999.99" step="0.01" type="number" placeholder="_" value="15000"/>
+                                <input class="form-control" id="sum" name="sum" type="number" value="15000" readonly/>
                                 <label for="sum">Сумма</label>
                             </div>
-{{--                            <div class="form-floating">--}}
-{{--                                <input class="form-control" id="orderid" name="orderid" maxlength="255" type="text" placeholder="_"/>--}}
-{{--                                <label for="orderid">Номер заказа</label>--}}
-{{--                            </div>--}}
                             <div class="form-floating">
-                                <input class="form-control" id="service_name" name="service_name" maxlength="255" type="text" placeholder="_" value="Добровольное пожертвование"/>
+                                <input class="form-control" id="service_name" name="service_name" type="text" value="Подписка" readonly/>
                                 <label for="service_name">Наименование услуги</label>
+                            </div>
+                            <div class="form-floating">
+                                <input class="form-control" id="client_email" name="client_email" maxlength="255" value="{{ Auth::user()->email }}" type="email" placeholder="_"/>
+                                <label for="client_email">Email</label>
                             </div>
                             <br />
                             <!-- Submit Button-->
-                            <button class="btn btn-primary text-uppercase" type="submit">Спасибо!</button>
+                            <button class="btn btn-primary text-uppercase" type="submit">Оплатить</button>
                         </form>
                     </div>
                 </div>

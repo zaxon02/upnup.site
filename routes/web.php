@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\PaykeeperController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
@@ -18,14 +19,16 @@ use App\Http\Controllers\CategoryController;
 
 Route::redirect('/', '/posts');
 
+Route::view('/contact', 'contact')->name('contact');
+
+Route::view('/about', 'about')->name('about');
+
+Route::view('/payment', 'payment')->name('payment');
+
+Route::get('/paykeeper', PaykeeperController::class)->name('paykeeper');
+
 Route::resource('categories', CategoryController::class);
 
 Route::resource('posts', PostController::class);
 
 Route::resource('offers', OfferController::class);
-
-Route::view('contact', 'contact')->name('contact');
-
-Route::view('about', 'about')->name('about');
-
-Route::view('payment', 'payment')->name('payment');
