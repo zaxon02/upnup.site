@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>{{ config('app.name') }} - Войти</title>
+    <title>{{ config('app.name') }} - Зарегистрироваться</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <!-- Login theme CSS -->
+    <!-- Register theme CSS -->
     <link href="/css/login.css" rel="stylesheet" />
 </head>
 <body>
@@ -22,9 +22,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-9 col-lg-8 mx-auto">
-                            <h3 class="login-heading mb-4">С возращением!</h3>
+                            <h3 class="login-heading mb-4">Добро пожаловать!</h3>
 
-                            <!-- Sign In Form -->
+                            <!-- Sign Up Form -->
                             @if ($errors->any())
                                 @foreach ($errors->all() as $error)
                                     <div class="alert alert-danger">
@@ -32,30 +32,27 @@
                                     </div>
                                 @endforeach
                             @endif
-                            <form action="{{ route('login') }}" method="post">
+                            <form action="{{ route('register') }}" method="post">
                                 @csrf
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
-                                    <label for="floatingInput">Email</label>
+                                    <input type="text" class="form-control" name="name" id="name" maxlength="255" placeholder="_">
+                                    <label for="name">Имя</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
-                                    <label for="floatingPassword">Пароль</label>
+                                    <input type="email" class="form-control" name="email" id="email" maxlength="255" placeholder="_">
+                                    <label for="email">Email</label>
                                 </div>
-
-                                <div class="form-check mb-3">
-                                    <input class="form-check-input" type="checkbox" value="" name="remember" id="rememberPasswordCheck">
-                                    <label class="form-check-label" for="rememberPasswordCheck">
-                                        Запомнить меня
-                                    </label>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" name="password" id="password" placeholder="_">
+                                    <label for="password">Пароль</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="_">
+                                    <label for="password_confirmation">Подтверждение пароля</label>
                                 </div>
 
                                 <div class="d-grid">
-                                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Войти</button>
-                                </div>
-
-                                <div class="text-center">
-                                    <a class="small" href="{{ route('register') }}">Зарегистрироваться</a>
+                                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Зарегистрироваться</button>
                                 </div>
                             </form>
                         </div>
