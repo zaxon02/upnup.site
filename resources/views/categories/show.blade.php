@@ -37,7 +37,12 @@
                     <hr class="my-4" />
                 @endforeach
                 <!-- Pager-->
-                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Смотреть больше →</a></div>
+                <div class="d-flex justify-content-between mb-4 gap-3 align-items-center">
+                    {{ $posts->onEachSide(1)->links() }}
+                    <a href="{{ route('categories.edit', $category) }}">
+                        <button type="submit" class="btn btn-outline-primary text-uppercase">Изменить</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

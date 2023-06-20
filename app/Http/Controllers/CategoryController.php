@@ -33,14 +33,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        // TODO: Pagination
+        // TODO: Развидеть это
         $category = Category::findOrFail($id);
-        $posts = $category->posts;
+        $posts = $category->posts()->orderByDesc('created_at')->paginate(4);
 
         return view('categories.show', ['category' => $category, 'posts' => $posts]);
     }
 
-    //TODO category page edit
     /**
      * Show the form for editing the specified resource.
      */
@@ -51,6 +50,11 @@ class CategoryController extends Controller
         return view('categories.edit', ['category' => $category]);
     }
 
+    // TODO: Поправить пути
+    // TODO: Добавить регистрацию
+    // TODO: Добавить валидацию
+    // TODO: Отправлять заявки в Telegram
+    // TODO: Перенести кнопку создать на главную
     /**
      * Update the specified resource in storage.
      */

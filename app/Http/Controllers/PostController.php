@@ -13,6 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        // Desc - Descending
         $posts = Post::orderByDesc('created_at')->paginate(4);
 
         return view('posts.index', ['posts' => $posts]);
