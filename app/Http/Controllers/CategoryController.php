@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('show');
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

@@ -29,9 +29,6 @@
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('posts.index') }}">Главная</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('about') }}">О нас</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('contact') }}">Контакты</a></li>
-                @guest
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('login') }}">Войти</a></li>
-                @endguest
                 @auth
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="javascript:{}" onclick="document.getElementById('logout').submit();">Выйти</a></li>
                     <form id="logout" action="{{ route('logout') }}" method="post">
