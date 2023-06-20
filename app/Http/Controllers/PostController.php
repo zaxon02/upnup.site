@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+// TODO: Проверять роли
 class PostController extends Controller
 {
     /**
