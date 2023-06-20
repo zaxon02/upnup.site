@@ -20,7 +20,8 @@ class OfferController extends Controller
         $offer->message = $request->input('message');
         $offer->save();
 
-        Telegraph::message($offer->message)->send();
+        $message = view('telegram.offer', ['offer' => $offer])->render();
+        Telegraph::html($message)->send();
 
         return redirect()->route('posts.index');
     }
