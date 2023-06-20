@@ -42,7 +42,7 @@
                     <button type="submit" class="btn btn-outline-primary text-uppercase">Удалить</button>
                 </form>
                 <a href="{{ route('posts.edit', $post) }}">
-                    <button type="submit" class="btn btn-outline-primary text-uppercase">Изменить</button>
+                    <button class="btn btn-outline-primary text-uppercase">Изменить</button>
                 </a>
             </div>
         </div>

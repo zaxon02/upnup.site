@@ -38,8 +38,11 @@
                     <hr class="my-4" />
                 @endforeach
                 <!-- Pager-->
-                <div class="d-flex justify-content-center mb-4 gap-3 align-items-center">
+                <div class="d-flex justify-content-between mb-4 gap-3 align-items-center">
                     {{ $posts->onEachSide(1)->links() }}
+                    <a href="{{ route('posts.create') }}">
+                        <button class="btn btn-outline-primary text-uppercase">Создать</button>
+                    </a>
                 </div>
             </div>
         </div>
