@@ -56,7 +56,7 @@
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="https://www.linkedin.com/in/katezarubina">
+                        <a href="https://linkedin.com/in/katezarubina">
                             <span class="fa-stack fa-lg">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
