@@ -50,12 +50,12 @@
                                 <label for="subtitle">Подзаголовок</label>
                             </div>
                             <div class="form-floating">
-                                <select class="form-control" name="category" id="category">
+                                <select class="form-control" name="category_id" id="category_id">
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}" @selected(old('category_id', $post->category_id) == $category->id)>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
-                                <label for="category">Категория</label>
+                                <label for="category_id">Категория</label>
                             </div>
                             <div class="form-floating">
                                 <input name="image" id="image" type="file" accept="image/*" placeholder="_"
