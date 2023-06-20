@@ -8,12 +8,10 @@
 </head>
 <body>
 <a href="/posts"><button>Назад</button></a>
-<form action="/posts" method="post">
+<form action="{{ route('categories.store') }}" method="post">
     @csrf
-    <label for="title">Title</label>
-    <input type="text" maxlength="255" name="title" id="title">
-    <label for="content">Content</label>
-    <input type="text" name="content" id="content">
+    <label for="name">Name</label>
+    <input type="text" maxlength="255" name="name" id="name">
     <button type="submit">Создать</button>
 </form>
 

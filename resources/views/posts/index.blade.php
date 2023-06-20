@@ -7,14 +7,18 @@
     <title>Laravel</title>
 </head>
 <body>
+@foreach($categories as $category)
+    <p>{{ $category->name }}</p>
+@endforeach
 
 <a href="/posts/create"><button>Создать</button></a>
 
 @foreach ($posts as $post)
-    <p>This is post {{ $post->title}} <br> {{$post->content}}</p>
+    <p>This is post {{ $post->title}} <br> {{ $post->content }}</p>
+    <p>Категория: {{ $post->category->name }}</p>
 
     <div style="display: flex">
-        <form action="/posts/{{$post->id}}" method="post">
+        <form action="/posts/{{ $post->id }}" method="post">
             @method('DELETE')
             @csrf
             <button type="submit">Удалить</button>
