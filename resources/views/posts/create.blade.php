@@ -67,7 +67,9 @@
                             <br />
                             <!-- Submit Button-->
                             <button class="btn btn-primary text-uppercase" type="submit">Создать</button>
-                            <a class="btn btn-primary text-uppercase" href="{{ route('categories.create') }}">Добавить категорию</a>
+                            @can('create categories')
+                                <a class="btn btn-primary text-uppercase" href="{{ route('categories.create') }}">Добавить категорию</a>
+                            @endcan
                         </form>
                     </div>
                 </div>

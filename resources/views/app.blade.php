@@ -32,6 +32,7 @@
                 @guest
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('login') }}">Войти</a></li>
                 @else
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ route('payment') }}">Оплата</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="javascript:{}" onclick="document.getElementById('logout').submit();">Выйти</a></li>
                     <form id="logout" action="{{ route('logout') }}" method="post">
                         @csrf

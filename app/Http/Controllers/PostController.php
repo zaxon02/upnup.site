@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-// TODO: Проверять роли
 class PostController extends Controller
 {
     /**
@@ -14,7 +13,7 @@ class PostController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->authorizeResource(Post::class, 'post');
     }
 
     /**
@@ -58,19 +57,16 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::findOrFail($id);
-
         return view('posts.show', ['post' => $post]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::findOrFail($id);
         $categories = Category::all();
 
         return view('posts.edit', ['post' => $post, 'categories' => $categories]);
@@ -79,9 +75,8 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($id, Request $request)
+    public function update(Post $post, Request $request)
     {
-        $post = Post::findOrFail($id);
         $post->title = $request->input('title');
         $post->subtitle = $request->input('subtitle');
         $post->premium = $request->boolean('premium');
@@ -100,9 +95,8 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::findOrFail($id);
         $post->delete();
 
         return redirect()->route('posts.index');

@@ -37,7 +37,7 @@
                     <hr class="my-4" />
                 @endforeach
                 <!-- Pager-->
-                @can('categories.edit')
+                @can(['update categories', 'delete categories'])
                     <div class="d-flex justify-content-between mb-4 gap-3 align-items-center">
                         {{ $posts->onEachSide(1)->links() }}
                         <div class="d-flex gap-3">

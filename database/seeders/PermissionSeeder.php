@@ -19,10 +19,14 @@ class PermissionSeeder extends Seeder
     {
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        Permission::create(['name' => 'categories.edit']);
-        Permission::create(['name' => 'posts.create']);
-        Permission::create(['name' => 'posts.edit']);
-        Permission::create(['name' => 'posts.destroy']);
+        Permission::create(['name' => 'create categories']);
+        Permission::create(['name' => 'update categories']);
+        Permission::create(['name' => 'delete categories']);
+
+        Permission::create(['name' => 'view premium posts']);
+        Permission::create(['name' => 'create posts']);
+        Permission::create(['name' => 'update posts']);
+        Permission::create(['name' => 'delete posts']);
 
         Role::create(['name' => 'admin'])
             ->givePermissionTo(Permission::all());

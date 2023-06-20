@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('show');
+        $this->authorizeResource(Category::class, 'category');
     }
 
     /**
@@ -40,9 +40,8 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        $category = Category::findOrFail($id);
         $posts = $category->posts()->orderByDesc('created_at')->paginate(4);
 
         return view('categories.show', ['category' => $category, 'posts' => $posts]);
@@ -51,19 +50,16 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
-
         return view('categories.edit', ['category' => $category]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        $category = Category::findOrFail($id);
         $category->name = $request->input('name');
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -78,9 +74,8 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $category = Category::findOrFail($id);
         $category->delete();
 
         return redirect()->route('posts.index');

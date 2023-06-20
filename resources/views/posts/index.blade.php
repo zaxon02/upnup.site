@@ -25,20 +25,27 @@
                 @foreach ($posts as $post)
                     <!-- Post preview-->
                     <div class="post-preview">
-                        <a href="{{ route('posts.show', $post) }}">
-                            <h2 class="post-title">{{ $post->title }}</h2>
-                            <h3 class="post-subtitle">{{ $post->subtitle }}</h3>
-                        </a>
+                        @if(!$post->premium || $post->premium && Auth::user()->can('view premium posts'))
+                            <a href="{{ route('posts.show', $post) }}">
+                                <h2 class="post-title">{{ $post->title }}</h2>
+                                <h3 class="post-subtitle">{{ $post->subtitle }}</h3>
+                            </a>
+                        @else
+                            <a href="{{ route('payment', $post) }}">
+                                <h2 class="post-title">{{ $post->title }}</h2>
+                                <h3 class="post-subtitle">{{ $post->subtitle }}</h3>
+                            </a>
+                        @endif
                         <p class="post-meta">
                             <a href="{{ route('categories.show', $post->category) }}">{{ $post->category->name }}</a>,
-                            {{ $post->created_at->isoFormat('DD.MM.YYYY') }}
+                            {{ $post->created_at->isoFormat('DD.MM.YYYY') }} @if($post->premium) ⭐ @endif
                         </p>
                     </div>
                     <!-- Divider-->
                     <hr class="my-4" />
                 @endforeach
                 <!-- Pager-->
-                @can('posts.create')
+                @can('create posts')
                     <div class="d-flex justify-content-between mb-4 gap-3 align-items-center">
                         {{ $posts->onEachSide(1)->links() }}
                         <a href="{{ route('posts.create') }}">
